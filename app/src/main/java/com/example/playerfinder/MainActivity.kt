@@ -2,6 +2,7 @@ package com.example.playerfinder
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
 import com.example.playerfinder.databinding.ActivityMainBinding
 import com.example.playerfinder.ui.RegistrationFragment
