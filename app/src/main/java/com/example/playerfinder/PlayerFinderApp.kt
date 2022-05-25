@@ -4,6 +4,10 @@ import android.app.Application
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
 import android.util.Log
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.example.playerfinder.data.PlayerFinderApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -40,7 +44,16 @@ class PlayerFinderApp : Application() {
 
         StrictMode.setThreadPolicy(ThreadPolicy.Builder().permitAll().build())
 
-        var myText = URL("localhost:1337/getGames").readText()
-        Log.d("dsa", "dsa")
+        val queue = Volley.newRequestQueue(this)
+        val url = "http://192.168.2.196:16789/api/getGames"
+
+        val stringRequest = StringRequest(
+            Request.Method.DEPRECATED_GET_OR_POST, url,
+            Response.Listener<String> { response ->
+                Log.d("tag", "Response is: ${response}")
+            },
+            Response.ErrorListener {Log.d("tag", "error")})
+
+        queue.add(stringRequest)
     }
 }
