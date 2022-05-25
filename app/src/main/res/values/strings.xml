@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">PlayerFinder</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="registration_username_hint">Введите имя пользователя</string>
+    <string name="registration_enter_password_hint">Введите пароль</string>
+    <string name="registration_btn_sign_up">Зарегистрироваться</string>
+    <string name="registration_enter_email_hint">Введите email</string>
+    <string name="registration_enter_phone_hint">Введите номер телефона</string>
+    <string name="registration_enter_age_hint">Сколько вам годиков</string>
 </resources>

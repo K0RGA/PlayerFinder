@@ -1,13 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.RegistrationFragment">
 
-    <TextView
+    <EditText
+        android:id="@+id/register_enter_username"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin"
+        android:hint="@string/registration_username_hint"
+        android:textColor="@color/black"
+        android:textColorHint="@color/colorHint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/register_enter_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin"
+        android:hint="@string/registration_enter_password_hint"
+        android:inputType="textPassword"
+        android:textColor="@color/black"
+        android:textColorHint="@color/colorHint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_enter_username" />
+
+    <EditText
+        android:id="@+id/register_enter_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin"
+        android:hint="@string/registration_enter_email_hint"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/black"
+        android:textColorHint="@color/colorHint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_enter_password" />
+
+    <EditText
+        android:id="@+id/register_enter_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin"
+        android:hint="@string/registration_enter_phone_hint"
+        android:inputType="phone"
+        android:textColor="@color/black"
+        android:textColorHint="@color/colorHint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_enter_email" />
+
+    <EditText
+        android:id="@+id/register_enter_age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin"
+        android:hint="@string/registration_enter_age_hint"
+        android:inputType="numberDecimal"
+        android:textColor="@color/black"
+        android:textColorHint="@color/colorHint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_enter_phone" />
+
+    <!--TODO доделать выбор списка игр(перенести его на другую страницу)-->
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin"
+        android:background="@color/colorPrimary"
+        android:text="@string/registration_btn_sign_up"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/register_enter_age" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
