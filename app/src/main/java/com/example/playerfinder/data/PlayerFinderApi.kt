@@ -1,13 +1,16 @@
 package com.example.playerfinder.data
 
 import com.example.playerfinder.model.Player
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import com.google.gson.JsonObject
+import retrofit2.Call
+import retrofit2.Response
+import retrofit2.http.*
 
 interface PlayerFinderApi {
-    @GET("./api/getGames")
-    fun getGames()
+
+    @Headers("Content-Type: application/json")
+    @POST(value = "/post")
+    suspend fun getGames(@Body body : String) : Call<JsonObject>
 
     @POST("/api/newUser")
     suspend fun newUser(@Body elementModel: Player)

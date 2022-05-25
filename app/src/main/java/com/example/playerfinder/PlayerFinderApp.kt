@@ -1,12 +1,17 @@
 package com.example.playerfinder
 
 import android.app.Application
+import android.os.StrictMode
+import android.os.StrictMode.ThreadPolicy
+import android.util.Log
 import com.example.playerfinder.data.PlayerFinderApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.net.HttpURLConnection
+import java.net.URL
+
 
 class PlayerFinderApp : Application() {
 
@@ -27,12 +32,15 @@ class PlayerFinderApp : Application() {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("localhost:1337")
+            .baseUrl("https://httpbin.org")
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .client(okHttpClient)
+            //.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            //.client(okHttpClient)
             .build()
 
-        playerFinderApi = retrofit.create(PlayerFinderApi::class.java)
+        StrictMode.setThreadPolicy(ThreadPolicy.Builder().permitAll().build())
+
+        var myText = URL("localhost:1337/getGames").readText()
+        Log.d("dsa", "dsa")
     }
 }
