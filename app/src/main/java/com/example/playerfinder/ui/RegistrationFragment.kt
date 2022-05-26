@@ -7,14 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.example.playerfinder.PlayerFinderApp
 import com.example.playerfinder.R
 import com.example.playerfinder.databinding.FragmentRegistrationBinding
 
 class RegistrationFragment : Fragment() {
 
     private lateinit var binding: FragmentRegistrationBinding
-    lateinit var rootView: View
-    //private lateinit var viewModel: RegistrationViewModel
+    private lateinit var viewModel: RegistrationViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,17 +22,14 @@ class RegistrationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentRegistrationBinding.inflate(layoutInflater)
-        rootView = inflater.inflate(R.layout.fragment_registration, container, false)
-        return rootView
-
-
+        var viewModel = ViewModelProvider(this)[RegistrationViewModel::class.java]
         binding.registerButton.setOnClickListener {
-            //viewModel.sendPushRequest()
+            viewModel.sendPushRequest((activity?.application as? PlayerFinderApp)?.playerFinderApi)
         }
+        return binding.root
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var viewModel = ViewModelProvider(this).get(RegistrationViewModel::class.java)
     }
 }

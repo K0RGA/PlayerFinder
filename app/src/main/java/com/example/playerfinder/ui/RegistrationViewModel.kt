@@ -1,23 +1,27 @@
 package com.example.playerfinder.ui
 
-import android.util.Log.println
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import android.util.Log
+import android.widget.Toast
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.playerfinder.data.PlayerFinderApi
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RegistrationViewModel : ViewModel(){
+class RegistrationViewModel(application: Application) : AndroidViewModel(application) {
 
-    fun smth () {
-        Thread.sleep(1000)
+    fun sendPushRequest(playerFinderApi: PlayerFinderApi?) {
+        playerFinderApi?.let {
+            viewModelScope.launch(Dispatchers.IO) {
+                Log.d("Internet","viewModelScope is launch")
+                try {
+                    val result = playerFinderApi.getGames()
+                    Log.d("Internet", "${result.toString()}")
+                } catch (e: Exception){
+                    Log.d("Internet","Exception -> ${e.localizedMessage}")
+                }
+            }
+        }
     }
-//    val playerFinderApi = PlayerFinderApi
-//
-//    fun sendPushRequest() {
-//        viewModelScope.launch {
-//            try {
-//                PlayerFinderApi.newUser
-//            }
-//        }
-//    }
 }

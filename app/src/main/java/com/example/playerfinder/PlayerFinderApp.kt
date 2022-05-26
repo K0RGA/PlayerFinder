@@ -5,7 +5,6 @@ import com.example.playerfinder.data.PlayerFinderApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 class PlayerFinderApp : Application() {
@@ -27,9 +26,8 @@ class PlayerFinderApp : Application() {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("localhost:1337")
+            .baseUrl("http://192.168.2.196:16789/api/")
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
             .build()
 
